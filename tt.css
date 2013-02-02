@@ -1,0 +1,22 @@
+pre {
+  background-color: #000;
+  color: #fff
+}
+
+.fg_000 { color: #000; }
+.fg_00F { color: #00F; }
+.fg_0F0 { color: #0F0; }
+.fg_0FF { color: #0FF; }
+.fg_F00 { color: #F00; }
+.fg_F0F { color: #F0F; }
+.fg_FF0 { color: #FF0; }
+.fg_FFF { color: #FFF; }
+
+.bg_000 { background-color: #000; }
+.bg_00F { background-color: #00F; }
+.bg_0F0 { background-color: #0F0; }
+.bg_0FF { background-color: #0FF; }
+.bg_F00 { background-color: #F00; }
+.bg_F0F { background-color: #F0F; }
+.bg_FF0 { background-color: #FF0; }
+.bg_FFF { background-color: #FFF; }
