@@ -133,6 +133,8 @@ return [
 	0x817E0690 => '&lt;',
 
 	0x9ADF5364 => '*', // middot (large)
+	0x76F21FBA => '-', // Single horizontal row
+	0xCA337757 => '=', // Double horizontal row
 
 	// Double height characters
 	BLANKSPACE => [ BLANKSPACE => ' ',

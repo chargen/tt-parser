@@ -7,11 +7,13 @@ $map = include 'map.php';
 $drawing = include 'drawing.php';
 
 $page = $_SERVER["QUERY_STRING"];
-if (!$page || !preg_match('/^[1-8][0-9][0-9](_[0-9][0-9])?$/', $page))
+if (!$page || !preg_match('/^\??[1-8][0-9][0-9](_[0-9][0-9])?$/', $page))
 {
   header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
   exit('Not Found');
 }
+$debug_enabled = strstr($page, '?');
+$page = str_replace('?','',$page);
 if (strlen($page) == 3)
   $page .= '_01';
 
@@ -41,6 +43,7 @@ $char_height = $img_height / 24;
 $char_pixels = $char_width * $char_height;
 
 $default_bg = imagecolorat($img, 0, 0);
+$default_fg = imagecolorclosest($img, 0xFF, 0xFF, 0xFF);
 
 function tt_charinfo($img, $y, $x)
 {
@@ -97,12 +100,23 @@ function tt_charinfo($img, $y, $x)
               );
 }
 
+function clrstr($img, $clr)
+{
+  if ($clr < 0)
+    return "FFF";
+
+  $info = imagecolorsforindex($img, $clr);
+  return sprintf('%X%X%X', $info['red']   / 16,
+                           $info['green'] / 16,
+                           $info['blue']  / 16);
+}
+
 $debug = array();
 $lower_data = [];
 
 for ($c_y = 0; $c_y < 24; $c_y++)
 {
-  $last_fg = -1;
+  $last_fg = $default_fg;
   $last_bg = $default_bg;
   $span_open = false;
   for ($c_x = 0; $c_x < 40; $c_x++)
@@ -134,7 +148,7 @@ for ($c_y = 0; $c_y < 24; $c_y++)
            }
            else if ($key === BLANKSPACE)
              $c = ' ';
-           else
+           else if ($debug_enabled)
 	    $fb_char .= '<!--L:' . sprintf('0x%08X', $lower_key) . '-->';
          }
          else if ($key === BLANKSPACE)
@@ -153,9 +167,12 @@ for ($c_y = 0; $c_y < 24; $c_y++)
 
     if (! isset($c))
     {
-      $c = $fb_char . '<!--' . sprintf('0x%08X', $key) . '-->';
+      if ($debug_enabled)
+        $c = $fb_char . '<!--' . sprintf('0x%08X', $key) . '-->';
+      else
+	$c = $fb_char;
 
-      if (true && !isset($debug[$key]) && !isset($drawing[$key]))
+      if ($debug_enabled && !isset($debug[$key]) && !isset($drawing[$key]))
       {
          $tmp = imagecreate($char_width, $char_height);
 
@@ -197,16 +214,8 @@ for ($c_y = 0; $c_y < 24; $c_y++)
     {
       if ($span_open)
         print('</span>');
-      $clrinfo = imagecolorsforindex($img, $fg);
-      $clrfg = sprintf('%X%X%X', $clrinfo['red']   / 16,
-                                 $clrinfo['green'] / 16,
-                                 $clrinfo['blue']  / 16);
 
-      $clrinfo = imagecolorsforindex($img, $bg);
-      $clrbg = sprintf('%X%X%X', $clrinfo['red']   / 16,
-                                 $clrinfo['green'] / 16,
-                                 $clrinfo['blue']  / 16);
-      print('<span class="fg_' . $clrfg . ' bg_' . $clrbg . '">');
+      print('<span class="fg_' . clrstr($img, $fg) . ' bg_' . clrstr($img, $bg) . '">');
       $last_fg = $fg;
       $last_bg = $bg;
       $span_open = true;
@@ -216,21 +225,7 @@ for ($c_y = 0; $c_y < 24; $c_y++)
       if ($span_open)
         print('</span>');
 
-      if ($last_fg != -1)
-      {
-        $clrinfo = imagecolorsforindex($img, $last_fg);
-        $clrfg = sprintf('%X%X%X', $clrinfo['red']   / 16,
-                                   $clrinfo['green'] / 16,
-                                   $clrinfo['blue']  / 16);
-      }
-      else
-        $clrfg = 'FFF';
-
-      $clrinfo = imagecolorsforindex($img, $bg);
-      $clrbg = sprintf('%X%X%X', $clrinfo['red']   / 16,
-                                 $clrinfo['green'] / 16,
-                                 $clrinfo['blue']  / 16);
-      print('<span class="fg_' . $clrfg . ' bg_' . $clrbg . '">');
+      print('<span class="fg_' . clrstr($img, $last_fg) . ' bg_' . clrstr($img, $bg) . '">');
       $last_bg = $bg;
       $span_open = true;
     }
