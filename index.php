@@ -7,12 +7,12 @@ $map = include 'map.php';
 $drawing = include 'drawing.php';
 
 $page = $_SERVER["QUERY_STRING"];
-if (!$page || !preg_match('/^\??[1-8][0-9][0-9](_[0-9][0-9])?$/', $page))
+if (!$page || !preg_match('/^\?*[1-8][0-9][0-9](_[0-9][0-9])?$/', $page))
 {
   header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
   exit('Not Found');
 }
-$debug_enabled = strstr($page, '?');
+$debug_level = substr_count($page, '?');
 $page = str_replace('?','',$page);
 if (strlen($page) == 3)
   $page .= '_01';
@@ -173,7 +173,7 @@ for ($c_y = 0; $c_y < 24; $c_y++)
            }
            else if ($key === BLANKSPACE)
              $c = ' ';
-           else if ($debug_enabled)
+           else if ($debug_level > 0)
 	    $fb_char .= '<!--L:' . sprintf('0x%08X', $lower_key) . '-->';
          }
          else if ($key === BLANKSPACE)
@@ -192,12 +192,14 @@ for ($c_y = 0; $c_y < 24; $c_y++)
 
     if (! isset($c))
     {
-      if ($debug_enabled)
+      if ($debug_level > 0)
         $c = $fb_char . '<!--' . sprintf('0x%08X', $key) . '-->';
       else
 	$c = $fb_char;
 
-      if ($debug_enabled && !isset($debug[$key]) && !isset($drawing[$key]))
+      if ($debug_level > 0 
+          && !isset($debug[$key]) 
+          && ($debug_level > 1 || !isset($drawing[$key])))
       {
          $tmp = imagecreate($char_width, $char_height);
 
