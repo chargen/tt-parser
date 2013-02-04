@@ -26,9 +26,6 @@ if (!$img)
   exit('Page not found');
 }
 
-//if (!$image)
-//  header('HTTP/1.0 404 Not found');
-
 header('Content-Type: text/html; charset=iso-8859-1');
 print('<!DOCTYPE html><html><head><title>TT-OCR: ' . $page .
       '</title>' .
@@ -66,9 +63,6 @@ $img_height = imagesy($img);
 $char_width = $img_width / 40;
 $char_height = $img_height / 24;
 $char_pixels = $char_width * $char_height;
-
-$default_bg = imagecolorat($img, 0, 0);
-$default_fg = imagecolorclosest($img, 0xFF, 0xFF, 0xFF);
 
 function tt_charinfo($img, $y, $x)
 {
@@ -138,6 +132,12 @@ function clrstr($img, $clr)
 
 $debug = array();
 $lower_data = [];
+
+$default_bg = imagecolorat($img, 0, 0);
+$default_fg = imagecolorclosest($img, 0xFF, 0xFF, 0xFF);
+
+if (clrstr($img, $default_fg) != 'FFF')
+  $default_fg = -1;
 
 for ($c_y = 0; $c_y < 24; $c_y++)
 {

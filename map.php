@@ -207,7 +207,7 @@ return [
 	0xDB6C54F6 => [ 0xF8799B7C => '-'],
 	0x62370CFB => [ 0x73AAEA55 => '/'],
 
-	0xF2536C09 => [ 0x9F611CF1 => "\xBE"], // e"
+	0xF2536C09 => [ 0x9F611CF1 => "\xEB"], // e"
 
 	0x49CFD2CB => [ BLANKSPACE => '"'],
 ];
