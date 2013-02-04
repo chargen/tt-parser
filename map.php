@@ -138,7 +138,8 @@ return [
 
 	// Double height characters
 	BLANKSPACE => [ BLANKSPACE => ' ',
-			0x207466D5 => '.'],
+			0x207466D5 => '.',
+			0x129EAC8B => ','],
 	0x44723039 => [ 0x685727A3 => 'a'],
 	0x469B78E7 => [ 0xA3872D00 => 'b'],
 	0xB40E5D9E => [ 0x4DD92ADF => 'c'],
@@ -162,7 +163,7 @@ return [
 	0x59E99862 => [ 0xDC857056 => 'u'],
 	0x1CA8060F => [ 0x73736DC7 => 'v'],
 	0xDF82A422 => [ 0x663DF0FD => 'w'],
-
+	0xC7B66F2D => [ 0xE54F3465 => 'x'],
 	0xE10BE358 => [ 0xDAD086EF => 'y'],
 	0x3AAC81B4 => [ 0xEE995FF9 => 'z'],
 
@@ -206,6 +207,11 @@ return [
 	0x6DDF23DD => [ 0x207466D5 => ':'],
 	0xDB6C54F6 => [ 0xF8799B7C => '-'],
 	0x62370CFB => [ 0x73AAEA55 => '/'],
+	0x501C86C5 => [ 0xD3027C89 => '&'],
+
+	0xB61915DD => [ 0x0B65C5A2 => '('],
+	0x9598617C => [ 0x59B23AF1 => ')'],
+	0x8EE690C5 => [ 0x0DF50AAE => '!'],
 
 	0xF2536C09 => [ 0x9F611CF1 => "\xEB"], // e"
 
