@@ -35,6 +35,31 @@ print('<!DOCTYPE html><html><head><title>TT-OCR: ' . $page .
       '<link rel="stylesheet" type="text/css" href="tt.css" />' .
       "</head><body><pre>\n");
 
+print(' ' . substr($page, 0, 3));
+if (substr($page, 4) == '01')
+  print('   ');
+else if (substr($page, 4, 1) == '0')
+  print('/' . substr($page, 5) . ' ');
+else
+  print('/' . substr($page, 4));
+
+print('  <span class="fg_0F0 bg_000">NOS-TT  </span>');
+$tm = time();
+$t = localtime($tm, true);
+$days = ['zo','ma','di','wo','do','vr','za'];
+$months = ['jan', 'feb', 'maa', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep',
+           'okt', 'nov', 'dev'];
+$day = $days[$t['tm_wday']];
+print('<span class="fg_FF0 bg_000">' .
+		  sprintf('%s %2d %s %d %02d:%02d:%02d', 
+			  $days[$t['tm_wday']],
+		          $t['tm_mday'],
+			  $months[$t['tm_mon']],
+			  $t['tm_year'] + 1900,
+			  $t['tm_hour'],
+			  $t['tm_min'],
+			  $t['tm_sec']) . "</span>\n");
+     			  
 $img_width = imagesx($img);
 $img_height = imagesy($img);
 
