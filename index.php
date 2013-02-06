@@ -1,7 +1,7 @@
 <?php
 define('IN_PAGE', 1);
 define('BLANKSPACE',
-        0x89A408C6);
+        (int)0x89A408C6); // Cast for x86 vs x64 compatibility
 
 $map = include 'map.php';
 $drawing = include 'drawing.php';
@@ -79,6 +79,7 @@ function tt_charinfo($img, $y, $x)
 
   for ($xx = 0; $xx < $char_width; $xx++)
   {
+    $v = 0;
     for ($yy = 0; $yy < $char_height; $yy++)
     {
       $c = imagecolorat($img, $x_off+$xx, $y_off+$yy);
@@ -97,7 +98,7 @@ function tt_charinfo($img, $y, $x)
     $t .= sprintf('%04x', $v);
   }
 
-  if ($c1_cnt > ($char_pixels * 5 / 3))
+  if ($c1_cnt > ($char_pixels * 20 / 11))
   {
     $tmp = $c2;
     $c2 = $c1;
