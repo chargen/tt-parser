@@ -122,10 +122,14 @@ return [
 	0xDAC3F036 => '`',
 	0x66703B82 => '\'',
 
+	0x16B70127 => "\xB0", // Degree
+
 	0x05EC6119 => '&amp;',
 	0x9D734729 => '=',
 	0x1DF46080 => '(',
 	0xDBD2D51B => ')',
+	0x8E6FBA84 => '[',
+	0xA2C05B62 => ']',
 	0x5403C2AC => '+',
 	0x6F6EF73C => '%',
 	0x1C21B8B3 => '&gt;',
@@ -133,12 +137,12 @@ return [
 
 	0x4A2763E0 => '*', // middot (large)
 	0x25439F81 => '-', // Single horizontal row
-	0 => '=', // Double horizontal row*/
+	0x4F3FB3DB => '=', // Double horizontal row*/
 
 	// Double height characters
 	BLANKSPACE => [ BLANKSPACE => ' ',
 					0x57357EEE => '.',
-					0 => ','],
+					0x1795F459 => ','],
 	0x0B78091F => [ 0x37C80D21 => 'a'],
 	0x9A387C1A => [ 0xDE06ECA6 => 'b'],
 	0x73F3C135 => [ 0xB16CD10D => 'c'],
@@ -162,8 +166,8 @@ return [
 	0x7411169B => [ 0x2CCF523E => 'u'],
 	0x9BAB6599 => [ 0x7395664D => 'v'],
 	0xC7C8B613 => [ 0x46890BFF => 'w'],
-	0 => [ 0 => 'x'],
-	0 => [ 0 => 'y'],
+	0xCF2B66A2 => [ 0x4901F097 => 'x'],
+	0x468F3C3B => [ 0xC97CEBAD => 'y'],
 	0x5A6012E4 => [ 0x31C362D4 => 'z'],
 
 	0xD93FA427 => [ 0xF5823536 => 'A'],
@@ -189,7 +193,9 @@ return [
 	0x4A74FD49 => [ 0x956FD709 => 'U'],
 	0xFB7FCE91 => [ 0x6D7B76C2 => 'V'],
 	0xB5A8CA95 => [ 0x33752BED => 'W'],
+	0xB5A8CA95 => [ 0x33752BED => 'W'],
 
+	0x8451AA02 => [ 0xF6515E6B => 'X'],
 	0x881A9A03 => [ 0x5A2E4047 => 'Z'],
 
 	0x753AAEAE => [ 0xC15131D5 => '0'],
@@ -206,14 +212,16 @@ return [
 	0x3A79929B => [ 0x57357EEE => ':'],
 	0xEE95ED80 => [ 0x3BF451FD => '-'],
 	0x3005716F => [ 0x0A279C3A => '/'],
-	0 => [ 0 => '&'],
+	0x2EBCAEBD => [ 0x2CFAC94A => '&'],
 
-	0 => [ 0 => '('],
-	0 => [ 0 => ')'],
+	0x25C04973 => [ 0xE7BB03FB => '('],
+	0xA4D651C1 => [ 0x34C0C7DC => ')'],
 	0 => [ 0 => '!'],
 
+	0xFFB306AD => [ 0x74AA7CAE => "\xE9"], // e'
 	0x864ABD2F => [ 0x74AA7CAE => "\xEA"], // e^
-	0 => [ 0 => "\xEB"], // e"
+	0x0625788B => [ 0x74AA7CAE => "\xEB"], // e"
 
+	0x96F21DF4 => [ BLANKSPACE => '\''],
 	0x8E51A1E5 => [ BLANKSPACE => '"'],
 ];
