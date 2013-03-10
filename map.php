@@ -134,7 +134,7 @@ return [
 	0x6F6EF73C => '%',
 	0xA9387A43 => '#',
 	0x1C21B8B3 => '&gt;',
-	0 => '&lt;',
+	0xD97D48CE => '&lt;',
 
 	0x4A2763E0 => '*', // middot (large)
 	0x25439F81 => '-', // Single horizontal row
