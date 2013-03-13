@@ -95,6 +95,8 @@ return [
 	0x444DECC0 => "\xFB", // u^
 	0x31C0B679 => "\xFC", // u"
 
+	0x1ADB41D8 => "\xA7", // Paragraph
+
 	0x692182A1 => '0',
 	0x4F9B5EFC => '1',
 	0x38C87447 => '2',
@@ -133,8 +135,10 @@ return [
 	0x5403C2AC => '+',
 	0x6F6EF73C => '%',
 	0xA9387A43 => '#',
+
 	0x1C21B8B3 => '&gt;',
 	0xD97D48CE => '&lt;',
+	0x76D1F13D => '"', // Upward "
 
 	0x4A2763E0 => '*', // middot (large)
 	0x25439F81 => '-', // Single horizontal row
