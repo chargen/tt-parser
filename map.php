@@ -227,6 +227,7 @@ return [
 	0xFFB306AD => [ 0x74AA7CAE => "\xE9"], // e'
 	0x864ABD2F => [ 0x74AA7CAE => "\xEA"], // e^
 	0x0625788B => [ 0x74AA7CAE => "\xEB"], // e"
+	0xABE46879 => [ 0x2CCF523E => "\xFC"], // u"
 
 	0x96F21DF4 => [ BLANKSPACE => '\''],
 	0x8E51A1E5 => [ BLANKSPACE => '"'],
