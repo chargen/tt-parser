@@ -199,7 +199,7 @@ return [
 	0xFB7FCE91 => [ 0x6D7B76C2 => 'V'],
 	0xB5A8CA95 => [ 0x33752BED => 'W'],
 	0xB5A8CA95 => [ 0x33752BED => 'W'],
-
+	0x8A8990C0 => [ 0xBC86032D => 'Y'],
 	0x8451AA02 => [ 0xF6515E6B => 'X'],
 	0x881A9A03 => [ 0x5A2E4047 => 'Z'],
 
@@ -228,6 +228,8 @@ return [
 	0x864ABD2F => [ 0x74AA7CAE => "\xEA"], // e^
 	0x0625788B => [ 0x74AA7CAE => "\xEB"], // e"
 	0xABE46879 => [ 0x2CCF523E => "\xFC"], // u"
+
+	0xE4D336C6 => [ 0x709EE8CF => "\xEF"], // i"
 
 	0x96F21DF4 => [ BLANKSPACE => '\''],
 	0x8E51A1E5 => [ BLANKSPACE => '"'],
